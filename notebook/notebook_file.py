@@ -25,10 +25,3 @@ class NoteBook():
         return self.notes
 
 
-
-create_notebook = NoteBook()
-get_note = create_notebook.new_note("hi","tw")
-print(get_note)
-note1 = create_notebook.modify_memo(0,"italy")
-print(note1)
-
