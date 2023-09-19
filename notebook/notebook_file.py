@@ -24,4 +24,5 @@ class NoteBook():
         temp_note.tags = tags
         return self.notes
 
-
+    def search(self, string):
+        return [note for note in self.notes if note.match_search(string)]
