@@ -26,3 +26,6 @@ class NoteBook():
 
     def search(self, string):
         return [note for note in self.notes if note.match_search(string)]
+
+    def __repr__(self):
+        return self.notes

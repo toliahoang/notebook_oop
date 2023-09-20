@@ -16,6 +16,5 @@ class Note():
     def match_search(self, string):
         return string in self.memo or string in self.tags
 
-
     def __repr__(self):
-        return f"{self.memo}--{self.tags}"
+        return f"'memo':{self.memo}--'tags':{self.tags}--'note_id':{self.id}"

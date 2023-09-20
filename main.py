@@ -1,10 +1,11 @@
 from note.note import Note
 from notebook.notebook_file import NoteBook
+import sys
 
 class Menu():
 
     def __init__(self):
-        notebook  = NoteBook()
+        self.notebook  = NoteBook()
         self.choice = {
             "1": self.show_notes,
             "2": self.search_notes,
@@ -32,4 +33,42 @@ class Menu():
                 print("{} is not a valid choice".format(choice))
 
     def show_notes(self, notes=None):
-        pass
+        if not notes:
+            notes =   self.notebook.notes
+        for note in notes:
+            print(f"'note_id':{note.id}--'tags':{note.tags}--'memo':{note.memo}")
+
+    def search_notes(self):
+        string = input("Enter string for searching: ")
+        print(self.notebook.search(string))
+        return self.notebook.search(string)
+
+    def add_note(self):
+        try:
+            memo = input("Enter new memo: ")
+            tags = input("Enter new tags: ")
+        except Exception as e:
+            print(e)
+        new_note = self.notebook.new_note(memo, tags)
+        return new_note
+
+    def modify_note(self):
+
+        try:
+            note_id = int(input("Enter note_id: "))
+            memo = input("Enter new memo: ")
+            tags = input("Enter new tags: ")
+        except Exception as e:
+            print(e)
+        assert note_id > 0, "note id should > 0"
+        self.notebook.modify_tags(note_id - 1, tags)
+        self.notebook.modify_memo(note_id - 1,memo)
+        return self.notebook.notes
+
+    def quit(self):
+        print("system exits")
+        sys.exit(0)
+
+
+if __name__ == "__main__":
+    Menu().run()
