@@ -12,12 +12,10 @@ class NoteBook():
         self.notes.append(new_note)
         return self.notes
 
-
     def modify_memo(self, note_id, memo):
         temp_note = self.notes[note_id]
         temp_note.memo = memo
         return self.notes
-
 
     def modify_tags(self, note_id, tags):
         temp_note = self.notes[note_id]

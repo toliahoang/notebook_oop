@@ -2,6 +2,7 @@ from note.note import Note
 from notebook.notebook_file import NoteBook
 import sys
 
+
 class Menu():
 
     def __init__(self):
@@ -14,7 +15,8 @@ class Menu():
             "5": self.quit
         }
 
-    def display_menu(self):
+    @staticmethod
+    def display_menu():
         print("""
             "1": show_notes,
             "2": search_notes,
@@ -34,7 +36,7 @@ class Menu():
 
     def show_notes(self, notes=None):
         if not notes:
-            notes =   self.notebook.notes
+            notes = self.notebook.notes
         for note in notes:
             print(f"'note_id':{note.id}--'tags':{note.tags}--'memo':{note.memo}")
 
@@ -65,7 +67,8 @@ class Menu():
         self.notebook.modify_memo(note_id - 1,memo)
         return self.notebook.notes
 
-    def quit(self):
+    @staticmethod
+    def quit():
         print("system exits")
         sys.exit(0)
 
